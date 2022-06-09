@@ -61,7 +61,8 @@ function parsedInitData(initData?: InitDataItem[]): FormatedInitData {
   const treeData: TreeNode[] = (initData || []).map((item) => {
      const parsedTypeItem: TreeNode = {
        type: TreeNodeType.FRANCHTYPE,
-       key: item.subjectType,
+      //  key: item.subjectType,
+       key: `franch-${item.subjectType}`,
        value: `franch-${item.subjectType}`,
        title: item.subjectTypeName,
        description: item.subjectTypeName,
@@ -261,6 +262,7 @@ const TreeTransfer = ({ dataSource, propsKeys, itemMap, handleOnChange }: PropsW
           const checkedKeys = [...selectedKeys, ...targetKeys];
           return (
             <Tree
+              key={leftSearchKey}
               blockNode
               checkable
               checkedKeys={checkedKeys}
